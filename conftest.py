@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 DESKTOP = [(1920, 1080), (1440, 900)]
 MOBILE = [(375, 812), (414, 896)]
@@ -9,6 +10,11 @@ BREAKPOINT_WIDTH = 1012
 
 
 def _make_driver(width, height):
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
     driver = webdriver.Chrome()
     driver.set_window_size(width, height)
     driver.get("https://github.com/")
