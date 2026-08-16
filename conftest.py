@@ -15,7 +15,7 @@ def _make_driver(width, height):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
     driver.set_window_size(width, height)
     driver.get("https://github.com/")
     return driver
