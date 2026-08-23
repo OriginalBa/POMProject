@@ -1,4 +1,5 @@
 import pytest
+from utils import attach
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -34,4 +35,9 @@ def setup_browser(request):
     driver = _make_driver(width, height)
     device_type = "desktop" if width >= BREAKPOINT_WIDTH else "mobile"
     yield driver, device_type
+
+    attach.add_screenshot(driver)
+    attach.add_page_source(driver)
+    attach.add_console_logs(driver)
+    attach.add_video(driver)
     driver.quit()
