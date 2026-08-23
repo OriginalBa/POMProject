@@ -11,10 +11,14 @@ BREAKPOINT_WIDTH = 1012
 
 def _make_driver(width, height):
     options = Options()
-    options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
+    options.browser_version = "149.0"
+    options.set_capability("selenoid:options", {
+        "enableVNC": True,
+        "enableVideo": False
+    })
     driver = webdriver.Remote(
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options, )
