@@ -30,6 +30,7 @@ def pytest_addoption(parser):
         help="Run browser in headless mode"
     )
 
+
 def _make_driver(width, height, browser_name, browser_version, headless):
     if browser_name == "firefox":
         options = FirefoxOptions()
@@ -47,8 +48,7 @@ def _make_driver(width, height, browser_name, browser_version, headless):
         if headless:
             options.add_argument("--headless=new")
 
-
-    options.browser_version = "browser_version"
+    options.browser_version = browser_version
     options.set_capability("selenoid:options", {
         "enableVNC": True,
         "enableVideo": False
