@@ -51,7 +51,8 @@ def _make_driver(width, height, browser_name, browser_version, headless):
     options.browser_version = browser_version
     options.set_capability("selenoid:options", {
         "enableVNC": True,
-        "enableVideo": False
+        "enableVideo": False,
+        "version": browser_version
     })
 
     driver = webdriver.Remote(
